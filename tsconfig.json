@@ -1,0 +1,48 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./",
+    "target": "ESNext",
+    "useDefineForClassFields": true,
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "strict": true,
+    "jsx": "preserve",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "lib": [
+      "ESNext",
+      "DOM",
+      "dom.iterable",
+      "scripthost"
+    ],
+    "skipLibCheck": true,
+    "strictNullChecks": false,
+    "noUnusedParameters": true,
+    "noUnusedLocals": true,
+    "noEmit": true,
+    "allowJs": true,
+    "declaration": true,
+    "declarationDir": "./typings",
+    "types": [
+    ],
+    "typeRoots": [
+      "./node_modules/",
+      "src/typings/index"
+    ],
+    "paths": {
+      "config/*": ["./src/config/*"],
+      "core/*": ["./src/core/*"],
+      "typings/*": ["./src/typings/*"],
+      "utils/*": ["./src/utils/*"]
+    }
+  },
+  "include": [
+    "src/vite-env.d.ts",
+    "src/**/*.ts",
+    "src/**/*.d.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue"
+  ],
+  "references": [{ "path": "./tsconfig.node.json" }]
+}

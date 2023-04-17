@@ -1,0 +1,58 @@
+{
+  "name": "@easy/axios",
+  "version": "1.0.0-beta.1",
+  "description": "a http request tool based on axios library encapsulation",
+  "keywords": [
+    "@easy/axios",
+    "axios",
+    "request",
+    "typescript",
+    "xhr",
+    "http",
+    "ajax",
+    "promise"
+  ],
+  "author": "dante-master <396840617@qq.com>",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "bugs": "",
+  "license": "MIT",
+  "type": "module",
+  "files": [
+    "dist",
+    "!dist/**/*.map",
+    "README.md",
+    "package.json"
+  ],
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
+  "browser": "dist/index.min.js",
+  "types": "dist/typings/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/typings/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "scripts": {
+    "build": "rollup -c"
+  },
+  "devDependencies": {
+    "@rollup/plugin-babel": "^6.0.3",
+    "@rollup/plugin-commonjs": "^24.1.0",
+    "@rollup/plugin-json": "^6.0.0",
+    "@rollup/plugin-node-resolve": "^15.0.2",
+    "@rollup/plugin-terser": "^0.4.1",
+    "@rollup/plugin-typescript": "^11.1.0",
+    "axios": "^1.3.5",
+    "eslint": "^8.38.0",
+    "prettier": "^2.8.7",
+    "qs": "^6.11.1",
+    "rollup": "^3.20.2",
+    "tslib": "^2.5.0",
+    "typescript": "^5.0.4"
+  }
+}
