@@ -1,9 +1,9 @@
 {
-  "name": "@easy/axios",
+  "name": "@easy-tools/axios",
   "version": "1.0.0-beta.1",
   "description": "a http request tool based on axios library encapsulation",
   "keywords": [
-    "@easy/axios",
+    "@easy-tools/axios",
     "axios",
     "request",
     "typescript",
@@ -12,7 +12,7 @@
     "ajax",
     "promise"
   ],
-  "author": "dante-master <396840617@qq.com>",
+  "author": "Dante-Master <396840617@qq.com>",
   "repository": {
     "type": "git",
     "url": ""
