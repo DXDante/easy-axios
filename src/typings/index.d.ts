@@ -93,7 +93,7 @@ export namespace Request {
   /** EasyAxios 流传输器自定义流数据序列 */
   export type StreamingConfigMode = 'Default' | 'Upload' | 'Download'
   export type StreamingConfigCustomSequence = (targetFormData: FormData, files: (File|Blob)[]) => void
-  export type StreamingConfigCustomDownloadResponse = <R>(options: { headers: Axios.AxiosResponseHeaders, data: Axios.AxiosResponse }) => R
+  export type StreamingConfigCustomDownloadResponse = <R>(options: { headers: Axios.AxiosResponseHeaders, data: Blob }) => R
 
   /** EasyAxios 流传输器配置 */
   export interface IStreamingConfig<T> extends IRequestConfig<T> {
@@ -112,12 +112,15 @@ export namespace Request {
   export interface IStreamingDownloadResponse {
     code: number
     message: string
-    data: Record<string, any>
+    data: {
+      streamConfig: Record<string, string>,
+      streamResult: Blob
+    }
   }
 
   /** EasyAxios 流传输器 */
   export interface IStreaming {
-    <T, R>(config: IStreamingConfig<T>): Promise<R>
+    <T, R>(config: IStreamingConfig<T>): Promise<R | IStreamingDownloadResponse>
   }
 
   /** EasyAxios 类 */

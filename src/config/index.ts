@@ -35,9 +35,9 @@ export const EasyAxiosContentTypeOptions = <Request.ContentTypeOptions>{
 }
 
 /**
- * 下载模式响应体结构
+ * 下载模式响应体默认结构
  */
-export const EasyAxiosDownloadResponseContent = {
+export const EasyAxiosDownloadResponseDefaultContent = <Request.IStreamingDownloadResponse>{
   code: 200,
   message: '下载成功'
 }

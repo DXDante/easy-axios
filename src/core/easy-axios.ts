@@ -4,7 +4,7 @@ import {
   useAxiosDefaultRequestConfig,
   EasyAxiosRequestQueryParamsMethod,
   EasyAxiosContentTypeOptions,
-  EasyAxiosDownloadResponseContent
+  EasyAxiosDownloadResponseDefaultContent
 } from '../config'
 import { useLoadingCounter, LoadingCounter } from '../core/loading-counter'
 import {
@@ -66,7 +66,7 @@ export class EasyAxios implements Request.IEasyAxios {
       config => {
         // { headers, data }
         if (__isFunction(beforeRequestHandler)) {
-          config = <Axios.InternalAxiosRequestConfig<any>>(beforeRequestHandler(config) || config)
+          config = <Axios.InternalAxiosRequestConfig<unknown>>(beforeRequestHandler(config) || config)
         }
   
         if (this.config.enableEmptyParamsFiltering && config.data) {
@@ -218,15 +218,15 @@ export class EasyAxios implements Request.IEasyAxios {
    * @param { (controller: AbortController): void } config.abortGenerator   ?生成终止请求器
    * @returns { Promise<R> }
    */
-  request<T, R = any>(config: Request.IRequestConfig<T>): Promise<R> {
+  request<T, R = unknown>(config: Request.IRequestConfig<T>): Promise<R> {
     requestInstanceErrorCheck(this.axiosInstance)
     const [errorField, errorInfo] = requestBaseErrorCheck<T>(config).split(':')
     if (errorField !== '') {
       throw new Error(`request(...) ${ errorField } 字段错误, ${ errorInfo }`)
     }
 
-    let {
-      method,
+    let { method } = config
+    const {
       interfacePath,
       params = {},
       data = {},
@@ -286,26 +286,26 @@ export class EasyAxios implements Request.IEasyAxios {
 
   /**
    * 流传输
-   * @param { Request.IStreamingConfig<T> } config                  请求配置
+   * @param { Request.IStreamingConfig<T> } config                          请求配置
    * @param { Request.RequestConfigMethod } config.method                   请求方式
    * @param { String } config.interfacePath                                 请求接口路径
    * @param { Request.StreamingConfigMode } config.mode                     ?指定模式 (默认为 'Default' 将不处理请求前置与后置任务, 如使用了请求、响应拦截器
    * 你也可以在此阶段做任何你想处理的操作, 本接口已经独立了上传、下载两个模式
    * 'Upload' 模式将自动将 files 和 data 合并转换为 formData 形式并更改请求头为 form 表单形式
-   * 'Download' 模式将强制使用 blob 为响应体类型, 且不会走你定义的拦截器, 默认的相应类型为 { code: number, data: { streamConfig: Record<string, string>, streamResult: any }, message: string },
-   * 这需要你指定响应内容类型为这个类型, 这可能有点强制性, 但你可以使用 customDownloadResponse 选项来自定义过滤最终响应的数据结构
+   * 'Download' 模式将强制使用 blob 为响应体类型, 且不会走你定义的拦截器, 默认的响应类型为 { code: number, data: { streamConfig: Record<string, string>, streamResult: Blob }, message: string },
+   * 这需要你指定响应内容类型为这个类型, 这可能有点强制性, 但你可以使用 customDownloadResponse 选项来自定义过滤最终响应的数据类型结构
    * @param { T } config.params                                             ?请求 URL 查询参数 (默认空对象)
    * @param { T } config.data                                               ?请求体参数 (默认空对象)
    * @param { Record<string, string> } config.headers                       ?请求头参数 (默认空对象)
    * @param { (File | Blob)[] } config.files                                ?需上传的流数据 (默认空数组, 支持 File | Blob 的类型)
    * @param { String } config.fileField                                     ?需上传流数据的字段名称 (默认 'file')
    * @param { String } config.responseType                                  ?响应体类型 (默认 'json',
-   * 注意在 mode 为 'Download' 模式时自动将该值设为 'blob', 因为是浏览器专属流响应类型)
+   * 注意当 mode 为 'Download' 时自动将该值设为 'blob', 因为是浏览器专属流响应类型)
    * @param { String } config.responseContentDisposition                    ?响应头自定义的响应说明, 比如下载文件时的文件名配置 (默认 'content-disposition',
    * 后端一般默认为 URL 查询参数, 这里将自动解析为对象形式并返回指定的数据结构)
    * @param { Request.StreamingConfigCustomDownloadResponse } config.customDownloadResponse ?自定义过滤下载响应数据结构, 最终返回你指定泛型的数据,
    * 该函数处理优先级高于默认行为, 见 mode 选项解释 (需自行处理 headers、data 参数)
-   * @param { Boolean } config.enableSequence                               ?启用多文件上传时自动序列文件字段名称, 多文件如: file[0], 单文件则为 file (默认 true)
+   * @param { Boolean } config.enableSequence                               ?启用多文件上传时自动序列文件字段名称, 多文件如 file[0] 格式, 单文件则为 file (默认 true)
    * @param { Function } config.customSequence                              ?自定义序列上传文件字段名称, 参数为 (form, files),
    * 你只需要处理 files 到 form 即可, 其他数据字段已经处理进 form 对象了
    * @param { Boolean } config.disableDataAutoDifferentiate                 ?禁用 data 字段数据自动判别 (默认 false)
@@ -316,7 +316,7 @@ export class EasyAxios implements Request.IEasyAxios {
    * @param { (event: unknown): void } config.onDownloadProgress            ?下载文件流时进度
    * @returns { Promise<R> }
    */
-  streaming<T, R = any>(config: Request.IStreamingConfig<T>): Promise<R> {
+  streaming<T, R = unknown>(config: Request.IStreamingConfig<T>): Promise<R | Request.IStreamingDownloadResponse> {
     requestInstanceErrorCheck(this.axiosInstance)
     const [errorField, errorInfo] = requestBaseErrorCheck<T>(config).split(':')
     if (errorField !== '') {
@@ -325,14 +325,16 @@ export class EasyAxios implements Request.IEasyAxios {
 
     let {
       method,
+      data = {},
+      headers = {},
+      responseType = 'json'
+    } = config
+    const {
       interfacePath,
       mode = 'Default',
       params = {},
-      data = {},
-      headers = {},
       files = [],
       fileField = 'file',
-      responseType = 'json',
       responseContentDisposition = 'content-disposition',
       customDownloadResponse,
       enableSequence = true,
@@ -388,14 +390,14 @@ export class EasyAxios implements Request.IEasyAxios {
 
             // 1) 优先使用自定义响应体构建
             if(__isFunction(customDownloadResponse)) {
-              return resolve(<R>customDownloadResponse(<{ headers: Axios.AxiosResponseHeaders, data: Axios.AxiosResponse }>({ headers, data })))
+              return resolve(<R>customDownloadResponse(<{ headers: Axios.AxiosResponseHeaders, data: Blob }>({ headers, data })))
             }
 
             // 2) 默认响应体构建
             const streamConfig = parseResponseHeaderQueryParameters(headers[responseContentDisposition])
-            return resolve(<R>{
-              data: { streamConfig, streamResult: data },
-              ...EasyAxiosDownloadResponseContent
+            return resolve(<Request.IStreamingDownloadResponse>{
+              ...EasyAxiosDownloadResponseDefaultContent,
+              data: { streamConfig, streamResult: data }
             })
           }
 
