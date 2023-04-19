@@ -1,4 +1,4 @@
-# @easy-tools/axios
+# easy-tools-axios
 一个基于 axios 库封装的轻松搞定请求、文件流传输的 HTTP 请求工具
 
 
@@ -11,7 +11,8 @@
 
 
 ## 前言
-特别感谢 [axios](https://github.com/axios/axios) 库, 近乎完美的封装浏览器、node.js 中的 HTTP 请求库, 本项目初衷是想让前端与后端交互过程中简化对于请求相关的各种处理, 所以以 axios 为基础进行二次开发, 整理请求、流传输统一的接口使用规范、全局的一些默认处理
+欢迎使用 easy-tools 系列工具之 axios\
+特别感谢 [axios](https://github.com/axios/axios) 库, 近乎完美的封装浏览器、node.js 中的 HTTP 请求库, 本项目初衷是想让前端与后端交互过程中简化对于请求相关的各种处理, 所以以 axios 为基础进行二次开发, 整理请求、流传输统一的接口使用规范、全局的一些默认处理\
 感谢 [qs](https://github.com/ljharb/qs) 库, 本项目中默认在序列化一些数据时可以使用到该库, 或者你也可以自定义序列
 
 
@@ -45,7 +46,7 @@ $ yarn add easy-tools-axios -S
 ```js
 import axios from 'axios'
 import qs from 'qs'
-import EasyAxios from '@easy-tools/axios'
+import EasyAxios from 'easy-tools-axios'
 
 /** 实例化时需要注意的是, 必须先调 create, 否则将会抛出错误提示, 因为在 create 中将会创建 axaios 实例, 后续的操作基于这个实例 */
 const easyAxios = new EasyAxios(/** EasyAxios 配置项 */)
