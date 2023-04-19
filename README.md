@@ -25,17 +25,17 @@
 ## 安装
 使用 npm:
 ```bash
-$ npm install @easy-tools/axios -S
+$ npm install easy-tools-axios -S
 ```
 
 使用 pnpm:
 ```bash
-$ pnpm add @easy-tools/axios -S
+$ pnpm add easy-tools-axios -S
 ```
 
 使用 yarn:
 ```bash
-$ yarn add @easy-tools/axios -S
+$ yarn add easy-tools-axios -S
 ```
 
 
