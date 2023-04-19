@@ -8,6 +8,7 @@
 - [安装](#安装)
 - [示例](#示例)
 - [文档](#文档)
+- [请求示例](#请求示例)
 
 
 ## 前言
@@ -205,3 +206,57 @@ export default easyAxios
   |abortGenerator	               |Function     |否       |生成终止请求器, 该函数会在准备发起请求前回调这个函数, 将 abortController(终止控制器) 回传|
   |onUploadProgress	             |Function     |否       |上传文件流时进度|
   |onDownloadProgress	           |Function     |否       |下载文件流时进度|
+
+
+## 请求示例
+```ts
+import { request, streaming } from 'request'
+
+// 假使这是定义在某个模块的全局的响应体结构接口
+interface IResponse<T> {
+  code: number
+  data: T
+  message: string
+}
+
+// GET 伪代码示例片段
+request<IGetQRCodeRequestParams, IResponse<IGetQRCodeResponceData>>({
+  method: 'GET',
+  interfacePath: '/api/getQRcode',
+  data: { organizationId: 0 }
+})
+
+// POST 伪代码示例片段
+request<IGetPageListRequestParams, IResponse<IGetPageListResponceData>>({
+  method: 'POST',
+  interfacePath: '/api/getPageList',
+  data: { page: 1 }
+})
+
+// Upload 伪代码示例片段
+streaming<IUploadFormRequestParams, IResponse<IUploadFormResponceData>>({
+  method: 'POST',
+  interfacePath: '/api/uploadForm',
+  mode: 'Upload',
+  data: { name: 'Dante' },
+  files: [/** 这里放置 Blob|File 对象, 其他参数根据需求指定参数 */]
+})
+
+// Download 伪代码示例片段
+streaming<IDownloadFileRequestParams, IResponse<IDownloadFileResponceData>>({
+  method: 'POST',
+  interfacePath: '/api/downloadFile',
+  mode: 'Download',
+  data: { name: 'Dante' },
+  // TODO: 定义后端定义的流数据相关数据的字段
+  // responseContentDisposition: 'content-disposition',
+  // TODO: 你也可以自定义响应结构体, 返回你最终的数据即可
+  // customDownloadResponse: ({ headers, data }) => {
+  //   return { customOptions, customStream: data }
+  // }
+}).then(({ data: { streamConfig, streamResult } }) => {
+  // TODO: 这将返回默认的结构体
+  // streamConfig 一般为下载文件流时后端反的流相关参数
+  // streamResult 文件流接收的字段
+})
+```
