@@ -1,5 +1,4 @@
 import type * as AxiosType from 'axios'
-import type * as QsType from 'qs'
 
 export namespace Axios {
   export = AxiosType
