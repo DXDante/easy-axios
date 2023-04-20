@@ -20,10 +20,10 @@
     "strictNullChecks": false,
     "noUnusedParameters": true,
     "noUnusedLocals": true,
-    "noEmit": true,
     "allowJs": true,
     "declaration": true,
     "declarationDir": "./typings",
+    "emitDeclarationOnly": true,
     "types": [
     ],
     "typeRoots": [
@@ -39,9 +39,7 @@
   },
   "include": [
     "src/**/*.ts",
-    "src/**/*.d.ts",
-    "src/**/*.tsx",
-    "src/**/*.vue"
+    "src/**/*.d.ts"
   ],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
