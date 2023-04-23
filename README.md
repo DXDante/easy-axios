@@ -42,9 +42,9 @@ $ yarn add easy-tools-axios -S
 
 
 ## 示例
-新建你的请求服务模块, 例如: request/index.js
+新建你的请求服务模块, 例如: request/index.ts, 或者 .js
 
-```js
+```ts
 import axios from 'axios'
 import qs from 'qs'
 import EasyAxios from 'easy-tools-axios'
