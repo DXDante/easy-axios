@@ -1,5 +1,6 @@
-import type { Axios, Request } from '../typings'
-
+import type * as Axios from 'axios'
+import type * as Base from '../typings/base'
+import type * as Util from '../typings/util'
 
 export const __isFunction = (value: unknown): boolean => typeof value === 'function'
 
@@ -38,13 +39,13 @@ export const requestParamsFilter = (data: Record<string, any>, eachCallback?: Fu
 /** 流传输创建 FormData
  * @param { Object } data
  */
-export const streamingCreateFormData = <Request.IStreamingCreateFormData>(<T>({
+export const streamingCreateFormData = <Util.IStreamingCreateFormData>(<T>({
   data,
   files = [],
   fileField = 'file',
   enableSequence = true,
   customSequence
-}: Request.StreamingCreateFormDataConfig<T>) => {
+}: Util.StreamingCreateFormDataConfig<T>): FormData => {
   const form = new FormData()
 
   // 添加参数
@@ -69,7 +70,7 @@ export const streamingCreateFormData = <Request.IStreamingCreateFormData>(<T>({
  * @param { String } resource 解析源查询参数字符串
  * @returns { Record<string, string> }
  */
-export const parseResponseHeaderQueryParameters = <Request.IParseResponseHeaderQueryParameters>((resource) => {
+export const parseResponseHeaderQueryParameters = <Util.IParseResponseHeaderQueryParameters>((resource) => {
   const result = {}
   if (typeof resource === 'string' && resource.length) {
     resource = decodeURIComponent(resource)
@@ -96,10 +97,10 @@ export const requestInstanceErrorCheck = (axiosInstance: Axios.AxiosInstance | n
 
 /**
  * 请求基础错误检查
- * @param { Request.IRequestConfig } config 请求配置参数
+ * @param { Base.IRequestConfig } config 请求配置参数
  * @returns { String }                      错误信息 (以 : 号作为分隔, 前面表示字段, 后面为错误说明)
  */
-export const requestBaseErrorCheck = <T>(config: Request.IRequestConfig<T>): string => {
+export const requestBaseErrorCheck = <T>(config: Base.IRequestConfig<T>): string => {
   if (config.interfacePath === '') {
     return 'interfacePath:接口路径(interfacePath)字段不能为空字符串'
   }

@@ -1,10 +1,9 @@
-
-import type { Request } from '../typings'
+import type * as Util from '../typings/util'
 
 /**
  * 等待计数器
  */
-export class LoadingCounter implements Request.ILoadingCounter {
+export class LoadingCounter implements Util.ILoadingCounter {
   count: number = 0
 
   // 启动计数器
@@ -17,10 +16,10 @@ export class LoadingCounter implements Request.ILoadingCounter {
     if (this.count > 0 && --this.count == 0) this.stopCallback()
   }
 
-  startCallback: Request.LoadingCounterCallback
-  stopCallback: Request.LoadingCounterCallback
+  startCallback: Util.LoadingCounterCallback
+  stopCallback: Util.LoadingCounterCallback
 
-  constructor(startCallback: Request.LoadingCounterCallback, stopCallback: Request.LoadingCounterCallback) {
+  constructor(startCallback: Util.LoadingCounterCallback, stopCallback: Util.LoadingCounterCallback) {
     this.startCallback = startCallback
     this.stopCallback = stopCallback
   }
@@ -33,8 +32,8 @@ export class LoadingCounter implements Request.ILoadingCounter {
  * @returns LoadingCounter  计数器实例
  */
 export const useLoadingCounter = (
-  startCallback: Request.LoadingCounterCallback,
-  stopCallback: Request.LoadingCounterCallback
+  startCallback: Util.LoadingCounterCallback,
+  stopCallback: Util.LoadingCounterCallback
 ): LoadingCounter => {
   return new LoadingCounter(startCallback, stopCallback)
 }

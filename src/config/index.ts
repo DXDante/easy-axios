@@ -1,10 +1,11 @@
-import type { Axios, Request } from '../typings'
+import type * as Axios from 'axios'
+import type * as Base from '../typings/base'
 import { __isFunction } from '../utils'
 
 /**
  * 默认请求方式 Keys
  */
-export const EasyAxiosDefaultMethods = <Request.RequestConfigMethod[]>[
+export const EasyAxiosDefaultMethods = <Base.RequestConfigMethod[]>[
   'GET', 'POST', 'PUT', 'DELETE', 'HEAD', 'OPTIONS', 'PATCH',
   'get', 'post', 'put', 'delete', 'head', 'options', 'patch'
 ]
@@ -12,13 +13,13 @@ export const EasyAxiosDefaultMethods = <Request.RequestConfigMethod[]>[
 /**
  * 指定请求数据类型归类
  */
-export const EasyAxiosRequestQueryParamsMethod = <Request.RequestConfigMethod>('GET')
-export const EasyAxiosRequestDataMethods = <Request.RequestConfigMethod[]>['POST', 'PUT', 'DELETE', 'HEAD', 'OPTIONS', 'PATCH']
+export const EasyAxiosRequestQueryParamsMethod = <Base.RequestConfigMethod>('GET')
+export const EasyAxiosRequestDataMethods = <Base.RequestConfigMethod[]>['POST', 'PUT', 'DELETE', 'HEAD', 'OPTIONS', 'PATCH']
 
 /**
  * 自定义默认配置
  */
-export const EasyAxiosDefaultConfig = <Request.EasyAxiosConfig>{
+export const EasyAxiosDefaultConfig = <Base.EasyAxiosConfig>{
   enableEmptyParamsFiltering: true,
   enableLog: true,
   successFontColor: '#05af0d',
@@ -28,16 +29,16 @@ export const EasyAxiosDefaultConfig = <Request.EasyAxiosConfig>{
 /**
  * 请求头 ContentType 字段配项
  */
-export const EasyAxiosContentTypeOptions = <Request.ContentTypeOptions>{
+export const EasyAxiosContentTypeOptions = <Base.ContentTypeOptions>({
   Json: 'application/json',
   FormData: 'multipart/form-data',
   FormUrl: 'application/x-www-form-urlencoded;charset=UTF-8'
-}
+})
 
 /**
  * 下载模式响应体默认结构
  */
-export const EasyAxiosDownloadResponseDefaultContent = <Request.IStreamingDownloadResponse>{
+export const EasyAxiosDownloadResponseDefaultContent = <Base.IStreamingDownloadResponse>{
   code: 200,
   message: '下载成功'
 }

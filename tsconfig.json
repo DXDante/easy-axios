@@ -21,9 +21,10 @@
     "noUnusedParameters": true,
     "noUnusedLocals": true,
     "allowJs": true,
-    "declaration": true,
-    "declarationDir": "./typings",
-    "emitDeclarationOnly": true,
+    // "declaration": true,
+    // "declarationMap": true,
+    // "declarationDir": "./typings",
+    // "emitDeclarationOnly": true,
     "types": [
     ],
     "typeRoots": [

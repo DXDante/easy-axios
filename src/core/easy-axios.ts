@@ -1,4 +1,6 @@
-import type { Axios, Request } from '../typings'
+import type * as Axios from 'axios'
+import type * as Base from '../typings/base'
+import type * as Util from '../typings/util'
 import {
   EasyAxiosDefaultConfig,
   useAxiosDefaultRequestConfig,
@@ -16,9 +18,9 @@ import {
   parseResponseHeaderQueryParameters
 } from '../utils'
 
-export class EasyAxios implements Request.IEasyAxios {
+export class EasyAxios implements Base.IEasyAxios {
   // EasyAxios 一些配置(启用查询参数过滤、启用请求日志等等)
-  config: Request.EasyAxiosConfig
+  config: Base.EasyAxiosConfig
   // axaios 的实例
   axiosInstance: Axios.AxiosInstance = null
   // 请求拦截器标识
@@ -26,9 +28,9 @@ export class EasyAxios implements Request.IEasyAxios {
   // 响应拦截器标识
   readonly responseInterceptorsIds: number[] = []
   // 状态码拦截器
-  __statusInterceptor: Request.IStatusInterceptorCallback = null
+  __statusInterceptor: Base.IStatusInterceptorCallback = null
   // Loading 计数控制器实例
-  __loadingInstance: Request.ILoadingCounter = null
+  __loadingInstance: Util.ILoadingCounter = null
 
   /**
    * 创建 axios 实例
@@ -53,13 +55,13 @@ export class EasyAxios implements Request.IEasyAxios {
 
   /**
    * 使用请求拦截器
-   * @param { Request.RequestInterceptorsHandler } beforeRequestHandler       请求前处理器 (通过 config 参数你可以处理 headers、data 相关数据)
-   * @param { Request.RequestInterceptorsErrorHandler } errorRequestHandler   请求错误处理器
-   * @returns { EasyAxios }                                                   当前 EasyAxios 实例
+   * @param { Base.RequestInterceptorsHandler } beforeRequestHandler       请求前处理器 (通过 config 参数你可以处理 headers、data 相关数据)
+   * @param { Base.RequestInterceptorsErrorHandler } errorRequestHandler   请求错误处理器
+   * @returns { EasyAxios }                                                当前 EasyAxios 实例
    */
   useRequestInterceptors(
-    beforeRequestHandler?: Request.RequestInterceptorsHandler,
-    errorRequestHandler?: Request.RequestInterceptorsErrorHandler
+    beforeRequestHandler?: Base.RequestInterceptorsHandler,
+    errorRequestHandler?: Base.RequestInterceptorsErrorHandler
   ): EasyAxios {
     requestInstanceErrorCheck(this.axiosInstance)
     const interceptorId = this.axiosInstance.interceptors.request.use(
@@ -118,13 +120,13 @@ export class EasyAxios implements Request.IEasyAxios {
   
   /**
    * 使用响应拦截器
-   * @param { Request.ResponseInterceptorsHandler } responseHandler             响应处理器 (可处理 headers、data 等数据)
-   * @param { Request.ResponseInterceptorsErrorHandler } errorResponseHandler   响应错误处理器
-   * @returns { EasyAxios }                                                     当前 EasyAxios 实例
+   * @param { Base.ResponseInterceptorsHandler } responseHandler             响应处理器 (可处理 headers、data 等数据)
+   * @param { Base.ResponseInterceptorsErrorHandler } errorResponseHandler   响应错误处理器
+   * @returns { EasyAxios }                                                  当前 EasyAxios 实例
    */
   useResponseInterceptors(
-    responseHandler?: Request.ResponseInterceptorsHandler,
-    errorResponseHandler?: Request.ResponseInterceptorsErrorHandler
+    responseHandler?: Base.ResponseInterceptorsHandler,
+    errorResponseHandler?: Base.ResponseInterceptorsErrorHandler
   ): EasyAxios {
     requestInstanceErrorCheck(this.axiosInstance)
     const interceptorId = this.axiosInstance.interceptors.response.use(
@@ -181,23 +183,23 @@ export class EasyAxios implements Request.IEasyAxios {
 
   /**
    * 使用状态码拦截器
-   * @param { Request.IStatusInterceptorCallback } callback                   状态码拦截器回调 (型参包含 response, resolve, reject, disableToast)
-   * @returns { EasyAxios }                                                   当前 EasyAxios 实例
+   * @param { Base.IStatusInterceptorCallback } callback                   状态码拦截器回调 (型参包含 response, resolve, reject, disableToast)
+   * @returns { EasyAxios }                                                当前 EasyAxios 实例
    */
-  useStatusInterceptors(callback: Request.IStatusInterceptorCallback): Request.IEasyAxios {
+  useStatusInterceptors(callback: Base.IStatusInterceptorCallback): Base.IEasyAxios {
     this.__statusInterceptor = callback
     return this
   }
 
   /**
    * 使用 Loading 计数器
-   * @param { Request.LoadingCounterCallback } startCallback 
-   * @param { Request.LoadingCounterCallback } stopCallback 
-   * @returns { EasyAxios }                                                   当前 EasyAxios 实例
+   * @param { Util.LoadingCounterCallback } startCallback                  启动 Loading 回调
+   * @param { Util.LoadingCounterCallback } stopCallback                   关闭 Loading 回调
+   * @returns { EasyAxios }                                                当前 EasyAxios 实例
    */
   useLoading(
-    startCallback: Request.LoadingCounterCallback,
-    stopCallback: Request.LoadingCounterCallback
+    startCallback: Util.LoadingCounterCallback,
+    stopCallback: Util.LoadingCounterCallback
   ) {
     this.__loadingInstance = useLoadingCounter(startCallback, stopCallback)
     return this
@@ -206,8 +208,8 @@ export class EasyAxios implements Request.IEasyAxios {
   /**
    * 请求器
    * @description 
-   * @param { Request.IRequestConfig<T> } config                            请求配置
-   * @param { Request.RequestConfigMethod } config.method                   请求方式
+   * @param { Base.IRequestConfig<T> } config                               请求配置
+   * @param { Base.RequestConfigMethod } config.method                      请求方式
    * @param { String } config.interfacePath                                 请求接口路径
    * @param { T } config.params                                             ?请求 URL 查询参数 (默认空对象)
    * @param { T } config.data                                               ?请求体参数 (默认空对象)
@@ -218,7 +220,7 @@ export class EasyAxios implements Request.IEasyAxios {
    * @param { (controller: AbortController): void } config.abortGenerator   ?生成终止请求器
    * @returns { Promise<R> }
    */
-  request<T, R = unknown>(config: Request.IRequestConfig<T>): Promise<R> {
+  request<T, R = unknown>(config: Base.IRequestConfig<T>): Promise<R> {
     requestInstanceErrorCheck(this.axiosInstance)
     const [errorField, errorInfo] = requestBaseErrorCheck<T>(config).split(':')
     if (errorField !== '') {
@@ -237,7 +239,7 @@ export class EasyAxios implements Request.IEasyAxios {
       abortGenerator
     } = config
 
-    method = <Request.RequestConfigMethod>(method.toUpperCase())
+    method = <Base.RequestConfigMethod>(method.toUpperCase())
 
     if (!disableLoading && this.__loadingInstance instanceof LoadingCounter) {
       this.__loadingInstance.start()
@@ -286,10 +288,10 @@ export class EasyAxios implements Request.IEasyAxios {
 
   /**
    * 流传输
-   * @param { Request.IStreamingConfig<T> } config                          请求配置
-   * @param { Request.RequestConfigMethod } config.method                   请求方式
+   * @param { Base.IStreamingConfig<T> } config                             请求配置
+   * @param { Base.RequestConfigMethod } config.method                      请求方式
    * @param { String } config.interfacePath                                 请求接口路径
-   * @param { Request.StreamingConfigMode } config.mode                     ?指定模式 (默认为 'Default' 将不处理请求前置与后置任务, 如使用了请求、响应拦截器
+   * @param { Base.StreamingConfigMode } config.mode                        ?指定模式 (默认为 'Default' 将不处理请求前置与后置任务, 如使用了请求、响应拦截器
    * 你也可以在此阶段做任何你想处理的操作, 本接口已经独立了上传、下载两个模式
    * 'Upload' 模式将自动将 files 和 data 合并转换为 formData 形式并更改请求头为 form 表单形式
    * 'Download' 模式将强制使用 blob 为响应体类型, 且不会走你定义的拦截器, 默认的响应类型为 { code: number, data: { streamConfig: Record<string, string>, streamResult: Blob }, message: string },
@@ -303,7 +305,7 @@ export class EasyAxios implements Request.IEasyAxios {
    * 注意当 mode 为 'Download' 时自动将该值设为 'blob', 因为是浏览器专属流响应类型)
    * @param { String } config.responseContentDisposition                    ?响应头自定义的响应说明, 比如下载文件时的文件名配置 (默认 'content-disposition',
    * 后端一般默认为 URL 查询参数, 这里将自动解析为对象形式并返回指定的数据结构)
-   * @param { Request.StreamingConfigCustomDownloadResponse } config.customDownloadResponse ?自定义过滤下载响应数据结构, 最终返回你指定泛型的数据,
+   * @param { Base.StreamingConfigCustomDownloadResponse } config.customDownloadResponse ?自定义过滤下载响应数据结构, 最终返回你指定泛型的数据,
    * 该函数处理优先级高于默认行为, 见 mode 选项解释 (需自行处理 headers、data 参数)
    * @param { Boolean } config.enableSequence                               ?启用多文件上传时自动序列文件字段名称, 多文件如 file[0] 格式, 单文件则为 file (默认 true)
    * @param { Function } config.customSequence                              ?自定义序列上传文件字段名称, 参数为 (form, files),
@@ -316,7 +318,7 @@ export class EasyAxios implements Request.IEasyAxios {
    * @param { (event: unknown): void } config.onDownloadProgress            ?下载文件流时进度
    * @returns { Promise<R> }
    */
-  streaming<T, R = unknown>(config: Request.IStreamingConfig<T>): Promise<R | Request.IStreamingDownloadResponse> {
+  streaming<T, R = unknown>(config: Base.IStreamingConfig<T>): Promise<R | Base.IStreamingDownloadResponse> {
     requestInstanceErrorCheck(this.axiosInstance)
     const [errorField, errorInfo] = requestBaseErrorCheck<T>(config).split(':')
     if (errorField !== '') {
@@ -347,7 +349,7 @@ export class EasyAxios implements Request.IEasyAxios {
       onDownloadProgress
     } = config
 
-    method = <Request.RequestConfigMethod>(method.toUpperCase())
+    method = <Base.RequestConfigMethod>(method.toUpperCase())
 
     // 上传模式, 使用 FormData 作为请求体数据, 主要用于文件上传
     if (mode === 'Upload') {
@@ -395,7 +397,7 @@ export class EasyAxios implements Request.IEasyAxios {
 
             // 2) 默认响应体构建
             const streamConfig = parseResponseHeaderQueryParameters(headers[responseContentDisposition])
-            return resolve(<Request.IStreamingDownloadResponse>{
+            return resolve(<Base.IStreamingDownloadResponse>{
               ...EasyAxiosDownloadResponseDefaultContent,
               data: { streamConfig, streamResult: data }
             })
@@ -421,13 +423,13 @@ export class EasyAxios implements Request.IEasyAxios {
   destroy() {}
 
   /**
-   * @param { Request.EasyAxiosConfig } config              配置项, 包含以下字段 (开启日志输出时, 必须要调用拦截器的使用)
+   * @param { Base.EasyAxiosConfig } config                 配置项, 包含以下字段 (开启日志输出时, 必须要调用拦截器的使用)
    * @param { Boolean } config.enableEmptyParamsFiltering   是否启用空参数过滤
    * @param { Boolean } config.enableLog                    是否启用日志输出
    * @param { String } config.successFontColor              请求成功日志字体颜色
    * @param { String } config.errorFontColor                请求失败日志字体颜色
    */
-  constructor(config: Request.EasyAxiosConfig = {}) {
+  constructor(config: Base.EasyAxiosConfig = {}) {
     this.config = Object.assign({}, EasyAxiosDefaultConfig, config)
   }
 }
