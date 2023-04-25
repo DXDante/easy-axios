@@ -6,15 +6,14 @@
     "module": "ESNext",
     "moduleResolution": "Node",
     "strict": true,
-    "jsx": "preserve",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "esModuleInterop": true,
     "lib": [
       "ESNext",
       "DOM",
-      "dom.iterable",
-      "scripthost"
+      "DOM.Iterable",
+      "ScriptHost"
     ],
     "skipLibCheck": true,
     "strictNullChecks": false,
