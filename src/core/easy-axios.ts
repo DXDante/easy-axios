@@ -18,7 +18,7 @@ import {
   parseResponseHeaderQueryParameters
 } from '../utils'
 
-export class EasyAxios implements Base.IEasyAxios {
+export class EasyAxios implements Base.EasyAxios {
   // EasyAxios 一些配置(启用查询参数过滤、启用请求日志等等)
   config: Base.EasyAxiosConfig
   // axaios 的实例
@@ -48,7 +48,7 @@ export class EasyAxios implements Base.IEasyAxios {
     axios: Axios.AxiosStatic,
     config: Axios.AxiosRequestConfig = {},
     qs?: any
-  ): EasyAxios {
+  ): Base.EasyAxios {
     this.axiosInstance = axios.create(Object.assign({}, useAxiosDefaultRequestConfig(qs), config))
     return this
   }
@@ -62,7 +62,7 @@ export class EasyAxios implements Base.IEasyAxios {
   useRequestInterceptors(
     beforeRequestHandler?: Base.RequestInterceptorsHandler,
     errorRequestHandler?: Base.RequestInterceptorsErrorHandler
-  ): EasyAxios {
+  ): Base.EasyAxios {
     requestInstanceErrorCheck(this.axiosInstance)
     const interceptorId = this.axiosInstance.interceptors.request.use(
       config => {
@@ -127,7 +127,7 @@ export class EasyAxios implements Base.IEasyAxios {
   useResponseInterceptors(
     responseHandler?: Base.ResponseInterceptorsHandler,
     errorResponseHandler?: Base.ResponseInterceptorsErrorHandler
-  ): EasyAxios {
+  ): Base.EasyAxios {
     requestInstanceErrorCheck(this.axiosInstance)
     const interceptorId = this.axiosInstance.interceptors.response.use(
       response => {
@@ -186,7 +186,7 @@ export class EasyAxios implements Base.IEasyAxios {
    * @param { Base.IStatusInterceptorCallback } callback                   状态码拦截器回调 (型参包含 response, resolve, reject, disableToast)
    * @returns { EasyAxios }                                                当前 EasyAxios 实例
    */
-  useStatusInterceptors(callback: Base.IStatusInterceptorCallback): Base.IEasyAxios {
+  useStatusInterceptors(callback: Base.IStatusInterceptorCallback): Base.EasyAxios {
     this.__statusInterceptor = callback
     return this
   }
@@ -200,7 +200,7 @@ export class EasyAxios implements Base.IEasyAxios {
   useLoading(
     startCallback: Util.LoadingCounterCallback,
     stopCallback: Util.LoadingCounterCallback
-  ) {
+  ): Base.EasyAxios {
     this.__loadingInstance = useLoadingCounter(startCallback, stopCallback)
     return this
   }

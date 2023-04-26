@@ -16,6 +16,8 @@
 //   }
 // }
 
-export type * from 'axios'
+import type { EasyAxios } from './base'
+
 export type * from './base'
 export type * from './util'
+export default EasyAxios

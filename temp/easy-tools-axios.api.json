@@ -195,6 +195,497 @@
           }
         },
         {
+          "kind": "Class",
+          "canonicalReference": "easy-tools-axios!EasyAxios:class",
+          "docComment": "/**\n * EasyAxios 类\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export class EasyAxios "
+            }
+          ],
+          "fileUrlPath": "src/typings/base.d.ts",
+          "releaseTag": "Public",
+          "isAbstract": false,
+          "name": "EasyAxios",
+          "preserveMemberOrder": false,
+          "members": [
+            {
+              "kind": "Property",
+              "canonicalReference": "easy-tools-axios!EasyAxios#__loadingInstance:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "__loadingInstance: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Util.ILoadingCounter",
+                  "canonicalReference": "easy-tools-axios!ILoadingCounter:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": " | null"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "__loadingInstance",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              },
+              "isStatic": false,
+              "isProtected": false,
+              "isAbstract": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "easy-tools-axios!EasyAxios#__statusInterceptor:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "__statusInterceptor: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "IStatusInterceptorCallback",
+                  "canonicalReference": "easy-tools-axios!IStatusInterceptorCallback:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": " | null"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "__statusInterceptor",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              },
+              "isStatic": false,
+              "isProtected": false,
+              "isAbstract": false
+            },
+            {
+              "kind": "Constructor",
+              "canonicalReference": "easy-tools-axios!EasyAxios:constructor(1)",
+              "docComment": "/**\n * Constructs a new instance of the `EasyAxios` class\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "constructor(config?: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "EasyAxiosConfig",
+                  "canonicalReference": "easy-tools-axios!EasyAxiosConfig:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": ")"
+                }
+              ],
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "config",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  },
+                  "isOptional": true
+                }
+              ]
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "easy-tools-axios!EasyAxios#axiosInstance:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "axiosInstance: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Axios.AxiosInstance",
+                  "canonicalReference": "axios!AxiosInstance:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": " | null"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "axiosInstance",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              },
+              "isStatic": false,
+              "isProtected": false,
+              "isAbstract": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "easy-tools-axios!EasyAxios#config:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "config: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "EasyAxiosConfig",
+                  "canonicalReference": "easy-tools-axios!EasyAxiosConfig:type"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "config",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false,
+              "isProtected": false,
+              "isAbstract": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "easy-tools-axios!EasyAxios#create:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "create: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "ICreate",
+                  "canonicalReference": "easy-tools-axios!ICreate:interface"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "create",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false,
+              "isProtected": false,
+              "isAbstract": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "easy-tools-axios!EasyAxios#destroy:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "destroy: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "() => void"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "destroy",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false,
+              "isProtected": false,
+              "isAbstract": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "easy-tools-axios!EasyAxios#destroyRequestInterceptors:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "destroyRequestInterceptors: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "(interceptorId: number) => void"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "destroyRequestInterceptors",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false,
+              "isProtected": false,
+              "isAbstract": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "easy-tools-axios!EasyAxios#destroyResponseInterceptors:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "destroyResponseInterceptors: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "(interceptorId: number) => void"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "destroyResponseInterceptors",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false,
+              "isProtected": false,
+              "isAbstract": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "easy-tools-axios!EasyAxios#request:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "request: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "IRequest",
+                  "canonicalReference": "easy-tools-axios!IRequest:interface"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "request",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false,
+              "isProtected": false,
+              "isAbstract": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "easy-tools-axios!EasyAxios#requestInterceptorsIds:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "readonly requestInterceptorsIds: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "number[]"
+                }
+              ],
+              "isReadonly": true,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "requestInterceptorsIds",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false,
+              "isProtected": false,
+              "isAbstract": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "easy-tools-axios!EasyAxios#responseInterceptorsIds:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "readonly responseInterceptorsIds: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "number[]"
+                }
+              ],
+              "isReadonly": true,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "responseInterceptorsIds",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false,
+              "isProtected": false,
+              "isAbstract": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "easy-tools-axios!EasyAxios#streaming:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "streaming: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "IStreaming",
+                  "canonicalReference": "easy-tools-axios!IStreaming:interface"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "streaming",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false,
+              "isProtected": false,
+              "isAbstract": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "easy-tools-axios!EasyAxios#useLoading:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "useLoading: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "IUseLoading",
+                  "canonicalReference": "easy-tools-axios!IUseLoading:interface"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "useLoading",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false,
+              "isProtected": false,
+              "isAbstract": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "easy-tools-axios!EasyAxios#useRequestInterceptors:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "useRequestInterceptors: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "IUseRequestInterceptors",
+                  "canonicalReference": "easy-tools-axios!IUseRequestInterceptors:interface"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "useRequestInterceptors",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false,
+              "isProtected": false,
+              "isAbstract": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "easy-tools-axios!EasyAxios#useResponseInterceptors:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "useResponseInterceptors: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "IUseResponseInterceptors",
+                  "canonicalReference": "easy-tools-axios!IUseResponseInterceptors:interface"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "useResponseInterceptors",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false,
+              "isProtected": false,
+              "isAbstract": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "easy-tools-axios!EasyAxios#useStatusInterceptors:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "useStatusInterceptors: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "IUseStatusInterceptors",
+                  "canonicalReference": "easy-tools-axios!IUseStatusInterceptors:interface"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "useStatusInterceptors",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false,
+              "isProtected": false,
+              "isAbstract": false
+            }
+          ],
+          "implementsTokenRanges": []
+        },
+        {
           "kind": "TypeAlias",
           "canonicalReference": "easy-tools-axios!EasyAxiosConfig:type",
           "docComment": "/**\n * EasyAxios 实例化配置\n *\n * @public\n */\n",
@@ -268,8 +759,8 @@
                 },
                 {
                   "kind": "Reference",
-                  "text": "IEasyAxios",
-                  "canonicalReference": "easy-tools-axios!IEasyAxios:interface"
+                  "text": "EasyAxios",
+                  "canonicalReference": "easy-tools-axios!EasyAxios:class"
                 }
               ],
               "returnTypeTokenRange": {
@@ -304,415 +795,6 @@
                   "isOptional": true
                 }
               ]
-            }
-          ],
-          "extendsTokenRanges": []
-        },
-        {
-          "kind": "Interface",
-          "canonicalReference": "easy-tools-axios!IEasyAxios:interface",
-          "docComment": "/**\n * EasyAxios 类\n *\n * @public\n */\n",
-          "excerptTokens": [
-            {
-              "kind": "Content",
-              "text": "export interface IEasyAxios "
-            }
-          ],
-          "fileUrlPath": "src/typings/base.d.ts",
-          "releaseTag": "Public",
-          "name": "IEasyAxios",
-          "preserveMemberOrder": false,
-          "members": [
-            {
-              "kind": "PropertySignature",
-              "canonicalReference": "easy-tools-axios!IEasyAxios#__loadingInstance:member",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "__loadingInstance: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "Util.ILoadingCounter",
-                  "canonicalReference": "easy-tools-axios!ILoadingCounter:interface"
-                },
-                {
-                  "kind": "Content",
-                  "text": " | null"
-                }
-              ],
-              "isReadonly": false,
-              "isOptional": false,
-              "releaseTag": "Public",
-              "name": "__loadingInstance",
-              "propertyTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 3
-              }
-            },
-            {
-              "kind": "PropertySignature",
-              "canonicalReference": "easy-tools-axios!IEasyAxios#__statusInterceptor:member",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "__statusInterceptor: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "IStatusInterceptorCallback",
-                  "canonicalReference": "easy-tools-axios!IStatusInterceptorCallback:interface"
-                },
-                {
-                  "kind": "Content",
-                  "text": " | null"
-                }
-              ],
-              "isReadonly": false,
-              "isOptional": false,
-              "releaseTag": "Public",
-              "name": "__statusInterceptor",
-              "propertyTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 3
-              }
-            },
-            {
-              "kind": "PropertySignature",
-              "canonicalReference": "easy-tools-axios!IEasyAxios#axiosInstance:member",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "axiosInstance: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "Axios.AxiosInstance",
-                  "canonicalReference": "axios!AxiosInstance:interface"
-                },
-                {
-                  "kind": "Content",
-                  "text": " | null"
-                }
-              ],
-              "isReadonly": false,
-              "isOptional": false,
-              "releaseTag": "Public",
-              "name": "axiosInstance",
-              "propertyTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 3
-              }
-            },
-            {
-              "kind": "PropertySignature",
-              "canonicalReference": "easy-tools-axios!IEasyAxios#config:member",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "config: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "EasyAxiosConfig",
-                  "canonicalReference": "easy-tools-axios!EasyAxiosConfig:type"
-                }
-              ],
-              "isReadonly": false,
-              "isOptional": false,
-              "releaseTag": "Public",
-              "name": "config",
-              "propertyTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 2
-              }
-            },
-            {
-              "kind": "PropertySignature",
-              "canonicalReference": "easy-tools-axios!IEasyAxios#create:member",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "create: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "ICreate",
-                  "canonicalReference": "easy-tools-axios!ICreate:interface"
-                }
-              ],
-              "isReadonly": false,
-              "isOptional": false,
-              "releaseTag": "Public",
-              "name": "create",
-              "propertyTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 2
-              }
-            },
-            {
-              "kind": "PropertySignature",
-              "canonicalReference": "easy-tools-axios!IEasyAxios#destroy:member",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "destroy: "
-                },
-                {
-                  "kind": "Content",
-                  "text": "() => void"
-                }
-              ],
-              "isReadonly": false,
-              "isOptional": false,
-              "releaseTag": "Public",
-              "name": "destroy",
-              "propertyTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 2
-              }
-            },
-            {
-              "kind": "PropertySignature",
-              "canonicalReference": "easy-tools-axios!IEasyAxios#destroyRequestInterceptors:member",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "destroyRequestInterceptors: "
-                },
-                {
-                  "kind": "Content",
-                  "text": "(interceptorId: number) => void"
-                }
-              ],
-              "isReadonly": false,
-              "isOptional": false,
-              "releaseTag": "Public",
-              "name": "destroyRequestInterceptors",
-              "propertyTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 2
-              }
-            },
-            {
-              "kind": "PropertySignature",
-              "canonicalReference": "easy-tools-axios!IEasyAxios#destroyResponseInterceptors:member",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "destroyResponseInterceptors: "
-                },
-                {
-                  "kind": "Content",
-                  "text": "(interceptorId: number) => void"
-                }
-              ],
-              "isReadonly": false,
-              "isOptional": false,
-              "releaseTag": "Public",
-              "name": "destroyResponseInterceptors",
-              "propertyTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 2
-              }
-            },
-            {
-              "kind": "PropertySignature",
-              "canonicalReference": "easy-tools-axios!IEasyAxios#request:member",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "request: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "IRequest",
-                  "canonicalReference": "easy-tools-axios!IRequest:interface"
-                }
-              ],
-              "isReadonly": false,
-              "isOptional": false,
-              "releaseTag": "Public",
-              "name": "request",
-              "propertyTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 2
-              }
-            },
-            {
-              "kind": "PropertySignature",
-              "canonicalReference": "easy-tools-axios!IEasyAxios#requestInterceptorsIds:member",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "readonly requestInterceptorsIds: "
-                },
-                {
-                  "kind": "Content",
-                  "text": "number[]"
-                }
-              ],
-              "isReadonly": true,
-              "isOptional": false,
-              "releaseTag": "Public",
-              "name": "requestInterceptorsIds",
-              "propertyTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 2
-              }
-            },
-            {
-              "kind": "PropertySignature",
-              "canonicalReference": "easy-tools-axios!IEasyAxios#responseInterceptorsIds:member",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "readonly responseInterceptorsIds: "
-                },
-                {
-                  "kind": "Content",
-                  "text": "number[]"
-                }
-              ],
-              "isReadonly": true,
-              "isOptional": false,
-              "releaseTag": "Public",
-              "name": "responseInterceptorsIds",
-              "propertyTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 2
-              }
-            },
-            {
-              "kind": "PropertySignature",
-              "canonicalReference": "easy-tools-axios!IEasyAxios#streaming:member",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "streaming: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "IStreaming",
-                  "canonicalReference": "easy-tools-axios!IStreaming:interface"
-                }
-              ],
-              "isReadonly": false,
-              "isOptional": false,
-              "releaseTag": "Public",
-              "name": "streaming",
-              "propertyTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 2
-              }
-            },
-            {
-              "kind": "PropertySignature",
-              "canonicalReference": "easy-tools-axios!IEasyAxios#useLoading:member",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "useLoading: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "IUseLoading",
-                  "canonicalReference": "easy-tools-axios!IUseLoading:interface"
-                }
-              ],
-              "isReadonly": false,
-              "isOptional": false,
-              "releaseTag": "Public",
-              "name": "useLoading",
-              "propertyTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 2
-              }
-            },
-            {
-              "kind": "PropertySignature",
-              "canonicalReference": "easy-tools-axios!IEasyAxios#useRequestInterceptors:member",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "useRequestInterceptors: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "IUseRequestInterceptors",
-                  "canonicalReference": "easy-tools-axios!IUseRequestInterceptors:interface"
-                }
-              ],
-              "isReadonly": false,
-              "isOptional": false,
-              "releaseTag": "Public",
-              "name": "useRequestInterceptors",
-              "propertyTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 2
-              }
-            },
-            {
-              "kind": "PropertySignature",
-              "canonicalReference": "easy-tools-axios!IEasyAxios#useResponseInterceptors:member",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "useResponseInterceptors: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "IUseResponseInterceptors",
-                  "canonicalReference": "easy-tools-axios!IUseResponseInterceptors:interface"
-                }
-              ],
-              "isReadonly": false,
-              "isOptional": false,
-              "releaseTag": "Public",
-              "name": "useResponseInterceptors",
-              "propertyTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 2
-              }
-            },
-            {
-              "kind": "PropertySignature",
-              "canonicalReference": "easy-tools-axios!IEasyAxios#useStatusInterceptors:member",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "useStatusInterceptors: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "IUseStatusInterceptors",
-                  "canonicalReference": "easy-tools-axios!IUseStatusInterceptors:interface"
-                }
-              ],
-              "isReadonly": false,
-              "isOptional": false,
-              "releaseTag": "Public",
-              "name": "useStatusInterceptors",
-              "propertyTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 2
-              }
             }
           ],
           "extendsTokenRanges": []
@@ -1964,8 +2046,8 @@
                 },
                 {
                   "kind": "Reference",
-                  "text": "IEasyAxios",
-                  "canonicalReference": "easy-tools-axios!IEasyAxios:interface"
+                  "text": "EasyAxios",
+                  "canonicalReference": "easy-tools-axios!EasyAxios:class"
                 }
               ],
               "returnTypeTokenRange": {
@@ -2040,8 +2122,8 @@
                 },
                 {
                   "kind": "Reference",
-                  "text": "IEasyAxios",
-                  "canonicalReference": "easy-tools-axios!IEasyAxios:interface"
+                  "text": "EasyAxios",
+                  "canonicalReference": "easy-tools-axios!EasyAxios:class"
                 }
               ],
               "returnTypeTokenRange": {
@@ -2116,8 +2198,8 @@
                 },
                 {
                   "kind": "Reference",
-                  "text": "IEasyAxios",
-                  "canonicalReference": "easy-tools-axios!IEasyAxios:interface"
+                  "text": "EasyAxios",
+                  "canonicalReference": "easy-tools-axios!EasyAxios:class"
                 }
               ],
               "returnTypeTokenRange": {
@@ -2183,8 +2265,8 @@
                 },
                 {
                   "kind": "Reference",
-                  "text": "IEasyAxios",
-                  "canonicalReference": "easy-tools-axios!IEasyAxios:interface"
+                  "text": "EasyAxios",
+                  "canonicalReference": "easy-tools-axios!EasyAxios:class"
                 }
               ],
               "returnTypeTokenRange": {

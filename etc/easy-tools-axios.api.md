@@ -14,21 +14,8 @@ export type ContentTypeOptions = {
 }
 
 // @public
-export type EasyAxiosConfig = {
-    enableEmptyParamsFiltering?: boolean
-    enableLog?: boolean
-    successFontColor?: string
-    errorFontColor?: string
-}
-
-// @public
-export interface ICreate {
-    // (undocumented)
-    (axios: Axios.AxiosStatic, config: Axios.AxiosRequestConfig, qs?: any): IEasyAxios
-}
-
-// @public
-export interface IEasyAxios {
+class EasyAxios {
+    constructor(config?: EasyAxiosConfig)
     // Warning: (ae-forgotten-export) The symbol "Util" needs to be exported by the entry point index.d.ts
     //
     // (undocumented)
@@ -63,6 +50,22 @@ export interface IEasyAxios {
     useResponseInterceptors: IUseResponseInterceptors
     // (undocumented)
     useStatusInterceptors: IUseStatusInterceptors
+}
+export { EasyAxios }
+export default EasyAxios;
+
+// @public
+export type EasyAxiosConfig = {
+    enableEmptyParamsFiltering?: boolean
+    enableLog?: boolean
+    successFontColor?: string
+    errorFontColor?: string
+}
+
+// @public
+export interface ICreate {
+    // (undocumented)
+    (axios: Axios.AxiosStatic, config: Axios.AxiosRequestConfig, qs?: any): EasyAxios
 }
 
 // @public
@@ -179,25 +182,25 @@ export interface IUseLoading {
     (
     startCallback: Util.LoadingCounterCallback,
     stopCallback: Util.LoadingCounterCallback
-    ): IEasyAxios
+    ): EasyAxios
 }
 
 // @public
 export interface IUseRequestInterceptors {
     // (undocumented)
-    (beforeRequestHandler?: RequestInterceptorsHandler, errorRequestHandler?: RequestInterceptorsErrorHandler): IEasyAxios
+    (beforeRequestHandler?: RequestInterceptorsHandler, errorRequestHandler?: RequestInterceptorsErrorHandler): EasyAxios
 }
 
 // @public
 export interface IUseResponseInterceptors {
     // (undocumented)
-    (responseHandler?: ResponseInterceptorsHandler, errorResponseHandler?: ResponseInterceptorsErrorHandler): IEasyAxios
+    (responseHandler?: ResponseInterceptorsHandler, errorResponseHandler?: ResponseInterceptorsErrorHandler): EasyAxios
 }
 
 // @public
 export interface IUseStatusInterceptors {
     // (undocumented)
-    (callback: IStatusInterceptorCallback): IEasyAxios
+    (callback: IStatusInterceptorCallback): EasyAxios
 }
 
 // @public
@@ -238,9 +241,6 @@ export type StreamingCreateFormDataConfig<T> = {
     enableSequence?: boolean
     customSequence?: Base.StreamingConfigCustomSequence
 }
-
-
-export * from "axios";
 
 // Warnings were encountered during analysis:
 //

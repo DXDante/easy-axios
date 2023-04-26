@@ -29,7 +29,7 @@ export type ContentTypeOptions = {
  * EasyAxios 创建请求实例
  */
 export interface ICreate {
-  (axios: Axios.AxiosStatic, config: Axios.AxiosRequestConfig, qs?: any): IEasyAxios
+  (axios: Axios.AxiosStatic, config: Axios.AxiosRequestConfig, qs?: any): EasyAxios
 }
 
 /**
@@ -61,7 +61,7 @@ export type ResponseInterceptorsErrorHandler = RequestInterceptorsErrorHandler
  * EasyAxios 使用请求拦截
  */
 export interface IUseRequestInterceptors {
-  (beforeRequestHandler?: RequestInterceptorsHandler, errorRequestHandler?: RequestInterceptorsErrorHandler): IEasyAxios
+  (beforeRequestHandler?: RequestInterceptorsHandler, errorRequestHandler?: RequestInterceptorsErrorHandler): EasyAxios
 }
 
 /**
@@ -69,7 +69,7 @@ export interface IUseRequestInterceptors {
  * EasyAxios 使用响应拦截
  */
 export interface IUseResponseInterceptors {
-  (responseHandler?: ResponseInterceptorsHandler, errorResponseHandler?: ResponseInterceptorsErrorHandler): IEasyAxios
+  (responseHandler?: ResponseInterceptorsHandler, errorResponseHandler?: ResponseInterceptorsErrorHandler): EasyAxios
 }
 
 /**
@@ -90,7 +90,7 @@ export interface IStatusInterceptorCallback {
  * EasyAxios 使用状态码拦截
  */
 export interface IUseStatusInterceptors {
-  (callback: IStatusInterceptorCallback): IEasyAxios
+  (callback: IStatusInterceptorCallback): EasyAxios
 }
 
 /**
@@ -101,7 +101,7 @@ export interface IUseLoading {
   (
     startCallback: Util.LoadingCounterCallback,
     stopCallback: Util.LoadingCounterCallback
-  ): IEasyAxios
+  ): EasyAxios
 }
 
 /**
@@ -194,7 +194,7 @@ export interface IStreaming {
  * @public
  * EasyAxios 类
  */
-export interface IEasyAxios {
+export class EasyAxios {
   config: EasyAxiosConfig
   axiosInstance: Axios.AxiosInstance | null
   readonly requestInterceptorsIds: number[]
@@ -211,4 +211,5 @@ export interface IEasyAxios {
   request: IRequest
   streaming: IStreaming
   destroy: () => void
+  constructor(config?: EasyAxiosConfig)
 }
