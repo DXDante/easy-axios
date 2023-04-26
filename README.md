@@ -9,6 +9,7 @@
 - [示例](#示例)
 - [文档](#文档)
 - [请求示例](#请求示例)
+- [注意事项](#注意事项)
 
 
 ## 前言
@@ -259,4 +260,24 @@ streaming<IDownloadFileRequestParams, IResponse<IDownloadFileResponceData>>({
   // streamConfig 一般为下载文件流时后端反的流相关参数
   // streamResult 文件流接收的字段
 })
+```
+
+
+## 注意事项
+在 TS 中使用时如果有某些错误提示, 可以检查如下 tsconfig 配置, 可以参考 [tsconfig 中文配置文档](https://www.typescriptlang.org/zh/tsconfig)
+```json
+{
+  "compilerOptions": {
+    "moduleResolution": "Node",
+    "strict": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "strictNullChecks": false,
+    "noUnusedParameters": true,
+    "noUnusedLocals": true,
+    "allowJs": true
+  }
+}
 ```
