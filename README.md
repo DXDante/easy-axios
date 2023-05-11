@@ -244,7 +244,9 @@ streaming<IUploadFormRequestParams, IResponse<IUploadFormResponceData>>({
 })
 
 // Download 伪代码示例片段
-streaming<IDownloadFileRequestParams, IResponse<IDownloadFileResponceData>>({
+// 下载模式时你可以导入 downloadStreamFile 模块, 在浏览器中将把文件流保存为指定文件
+// import { downloadStreamFile } from 'easy-tools-axios'
+streaming<IDownloadFileRequestParams, IResponse<IDownloadFileResponceData>|IStreamingDownloadResponse>({
   method: 'POST',
   interfacePath: '/api/downloadFile',
   mode: 'Download',
@@ -259,6 +261,8 @@ streaming<IDownloadFileRequestParams, IResponse<IDownloadFileResponceData>>({
   // TODO: 这将返回默认的结构体
   // streamConfig 一般为下载文件流时后端反的流相关参数
   // streamResult 文件流接收的字段
+
+  // downloadStreamFile(streamResult, streamConfig.filename)
 })
 ```
 
