@@ -194,13 +194,13 @@ export interface IStreaming {
  * @public
  * EasyAxios 类
  */
-export class EasyAxios {
+export declare class EasyAxios {
   config: EasyAxiosConfig
   axiosInstance: Axios.AxiosInstance | null
   readonly requestInterceptorsIds: number[]
   readonly responseInterceptorsIds: number[]
   __statusInterceptor: IStatusInterceptorCallback | null
-  __loadingInstance: Util.ILoadingCounter | null
+  __loadingInstance: Util.LoadingCounter | null
   create: ICreate
   useRequestInterceptors: IUseRequestInterceptors
   destroyRequestInterceptors: (interceptorId: number) => void

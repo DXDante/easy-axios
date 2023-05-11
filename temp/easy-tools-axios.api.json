@@ -195,13 +195,37 @@
           }
         },
         {
+          "kind": "Variable",
+          "canonicalReference": "easy-tools-axios!downloadStreamFile:var",
+          "docComment": "/**\n * 下载文件接口声明\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "downloadStreamFile: "
+            },
+            {
+              "kind": "Reference",
+              "text": "IDownloadStreamFile",
+              "canonicalReference": "easy-tools-axios!IDownloadStreamFile:interface"
+            }
+          ],
+          "fileUrlPath": "src/typings/util.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "downloadStreamFile",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 2
+          }
+        },
+        {
           "kind": "Class",
           "canonicalReference": "easy-tools-axios!EasyAxios:class",
           "docComment": "/**\n * EasyAxios 类\n *\n * @public\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
-              "text": "export class EasyAxios "
+              "text": "export declare class EasyAxios "
             }
           ],
           "fileUrlPath": "src/typings/base.d.ts",
@@ -221,8 +245,8 @@
                 },
                 {
                   "kind": "Reference",
-                  "text": "Util.ILoadingCounter",
-                  "canonicalReference": "easy-tools-axios!ILoadingCounter:interface"
+                  "text": "Util.LoadingCounter",
+                  "canonicalReference": "easy-tools-axios!LoadingCounter:class"
                 },
                 {
                   "kind": "Content",
@@ -801,133 +825,157 @@
         },
         {
           "kind": "Interface",
-          "canonicalReference": "easy-tools-axios!ILoadingCounter:interface",
-          "docComment": "/**\n * Loading 计数器类\n *\n * @public\n */\n",
+          "canonicalReference": "easy-tools-axios!IDownloadStreamFile:interface",
+          "docComment": "/**\n * 下载文件\n *\n * @public\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
-              "text": "export interface ILoadingCounter "
+              "text": "export interface IDownloadStreamFile "
             }
           ],
           "fileUrlPath": "src/typings/util.d.ts",
           "releaseTag": "Public",
-          "name": "ILoadingCounter",
+          "name": "IDownloadStreamFile",
+          "preserveMemberOrder": false,
+          "members": [
+            {
+              "kind": "CallSignature",
+              "canonicalReference": "easy-tools-axios!IDownloadStreamFile:call(1)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "(streamData: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "File",
+                  "canonicalReference": "!File:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "|"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Blob",
+                  "canonicalReference": "!Blob:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", fileName: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Promise",
+                  "canonicalReference": "!Promise:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "IDownloadStreamFileResult",
+                  "canonicalReference": "easy-tools-axios!IDownloadStreamFileResult:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": ">"
+                }
+              ],
+              "returnTypeTokenRange": {
+                "startIndex": 7,
+                "endIndex": 11
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "streamData",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 4
+                  },
+                  "isOptional": false
+                },
+                {
+                  "parameterName": "fileName",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 5,
+                    "endIndex": 6
+                  },
+                  "isOptional": false
+                }
+              ]
+            }
+          ],
+          "extendsTokenRanges": []
+        },
+        {
+          "kind": "Interface",
+          "canonicalReference": "easy-tools-axios!IDownloadStreamFileResult:interface",
+          "docComment": "/**\n * 下载文件返回\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export interface IDownloadStreamFileResult "
+            }
+          ],
+          "fileUrlPath": "src/typings/util.d.ts",
+          "releaseTag": "Public",
+          "name": "IDownloadStreamFileResult",
           "preserveMemberOrder": false,
           "members": [
             {
               "kind": "PropertySignature",
-              "canonicalReference": "easy-tools-axios!ILoadingCounter#count:member",
+              "canonicalReference": "easy-tools-axios!IDownloadStreamFileResult#errorData:member",
               "docComment": "",
               "excerptTokens": [
                 {
                   "kind": "Content",
-                  "text": "count: "
+                  "text": "errorData?: "
                 },
                 {
                   "kind": "Content",
-                  "text": "number"
+                  "text": "unknown"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "errorData",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "easy-tools-axios!IDownloadStreamFileResult#state:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "state: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "'success' | 'error'"
                 }
               ],
               "isReadonly": false,
               "isOptional": false,
               "releaseTag": "Public",
-              "name": "count",
-              "propertyTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 2
-              }
-            },
-            {
-              "kind": "PropertySignature",
-              "canonicalReference": "easy-tools-axios!ILoadingCounter#start:member",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "readonly start: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "LoadingCounterStartOrStop",
-                  "canonicalReference": "easy-tools-axios!LoadingCounterStartOrStop:type"
-                }
-              ],
-              "isReadonly": true,
-              "isOptional": false,
-              "releaseTag": "Public",
-              "name": "start",
-              "propertyTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 2
-              }
-            },
-            {
-              "kind": "PropertySignature",
-              "canonicalReference": "easy-tools-axios!ILoadingCounter#startCallback:member",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "startCallback: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "LoadingCounterCallback",
-                  "canonicalReference": "easy-tools-axios!LoadingCounterCallback:type"
-                }
-              ],
-              "isReadonly": false,
-              "isOptional": false,
-              "releaseTag": "Public",
-              "name": "startCallback",
-              "propertyTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 2
-              }
-            },
-            {
-              "kind": "PropertySignature",
-              "canonicalReference": "easy-tools-axios!ILoadingCounter#stop:member",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "readonly stop: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "LoadingCounterStartOrStop",
-                  "canonicalReference": "easy-tools-axios!LoadingCounterStartOrStop:type"
-                }
-              ],
-              "isReadonly": true,
-              "isOptional": false,
-              "releaseTag": "Public",
-              "name": "stop",
-              "propertyTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 2
-              }
-            },
-            {
-              "kind": "PropertySignature",
-              "canonicalReference": "easy-tools-axios!ILoadingCounter#stopCallback:member",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "stopCallback: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "LoadingCounterCallback",
-                  "canonicalReference": "easy-tools-axios!LoadingCounterCallback:type"
-                }
-              ],
-              "isReadonly": false,
-              "isOptional": false,
-              "releaseTag": "Public",
-              "name": "stopCallback",
+              "name": "state",
               "propertyTypeTokenRange": {
                 "startIndex": 1,
                 "endIndex": 2
@@ -2080,6 +2128,82 @@
         },
         {
           "kind": "Interface",
+          "canonicalReference": "easy-tools-axios!IUseLoadingCounter:interface",
+          "docComment": "/**\n * Loading 使用计数器\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export interface IUseLoadingCounter "
+            }
+          ],
+          "fileUrlPath": "src/typings/util.d.ts",
+          "releaseTag": "Public",
+          "name": "IUseLoadingCounter",
+          "preserveMemberOrder": false,
+          "members": [
+            {
+              "kind": "CallSignature",
+              "canonicalReference": "easy-tools-axios!IUseLoadingCounter:call(1)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "(startCallback: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "LoadingCounterCallback",
+                  "canonicalReference": "easy-tools-axios!LoadingCounterCallback:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", stopCallback: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "LoadingCounterCallback",
+                  "canonicalReference": "easy-tools-axios!LoadingCounterCallback:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "LoadingCounter",
+                  "canonicalReference": "easy-tools-axios!LoadingCounter:class"
+                }
+              ],
+              "returnTypeTokenRange": {
+                "startIndex": 5,
+                "endIndex": 6
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "startCallback",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  },
+                  "isOptional": false
+                },
+                {
+                  "parameterName": "stopCallback",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 3,
+                    "endIndex": 4
+                  },
+                  "isOptional": false
+                }
+              ]
+            }
+          ],
+          "extendsTokenRanges": []
+        },
+        {
+          "kind": "Interface",
           "canonicalReference": "easy-tools-axios!IUseRequestInterceptors:interface",
           "docComment": "/**\n * EasyAxios 使用请求拦截\n *\n * @public\n */\n",
           "excerptTokens": [
@@ -2288,6 +2412,209 @@
             }
           ],
           "extendsTokenRanges": []
+        },
+        {
+          "kind": "Class",
+          "canonicalReference": "easy-tools-axios!LoadingCounter:class",
+          "docComment": "/**\n * Loading 计数器类\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export class LoadingCounter "
+            }
+          ],
+          "fileUrlPath": "src/typings/util.d.ts",
+          "releaseTag": "Public",
+          "isAbstract": false,
+          "name": "LoadingCounter",
+          "preserveMemberOrder": false,
+          "members": [
+            {
+              "kind": "Constructor",
+              "canonicalReference": "easy-tools-axios!LoadingCounter:constructor(1)",
+              "docComment": "/**\n * Constructs a new instance of the `LoadingCounter` class\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "constructor(startCallback: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "LoadingCounterCallback",
+                  "canonicalReference": "easy-tools-axios!LoadingCounterCallback:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", stopCallback: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "LoadingCounterCallback",
+                  "canonicalReference": "easy-tools-axios!LoadingCounterCallback:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": ")"
+                }
+              ],
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "startCallback",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  },
+                  "isOptional": false
+                },
+                {
+                  "parameterName": "stopCallback",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 3,
+                    "endIndex": 4
+                  },
+                  "isOptional": false
+                }
+              ]
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "easy-tools-axios!LoadingCounter#count:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "count: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "number"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "count",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false,
+              "isProtected": false,
+              "isAbstract": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "easy-tools-axios!LoadingCounter#start:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "readonly start: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "LoadingCounterStartOrStop",
+                  "canonicalReference": "easy-tools-axios!LoadingCounterStartOrStop:type"
+                }
+              ],
+              "isReadonly": true,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "start",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false,
+              "isProtected": false,
+              "isAbstract": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "easy-tools-axios!LoadingCounter#startCallback:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "startCallback: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "LoadingCounterCallback",
+                  "canonicalReference": "easy-tools-axios!LoadingCounterCallback:type"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "startCallback",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false,
+              "isProtected": false,
+              "isAbstract": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "easy-tools-axios!LoadingCounter#stop:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "readonly stop: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "LoadingCounterStartOrStop",
+                  "canonicalReference": "easy-tools-axios!LoadingCounterStartOrStop:type"
+                }
+              ],
+              "isReadonly": true,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "stop",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false,
+              "isProtected": false,
+              "isAbstract": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "easy-tools-axios!LoadingCounter#stopCallback:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "stopCallback: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "LoadingCounterCallback",
+                  "canonicalReference": "easy-tools-axios!LoadingCounterCallback:type"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "stopCallback",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false,
+              "isProtected": false,
+              "isAbstract": false
+            }
+          ],
+          "implementsTokenRanges": []
         },
         {
           "kind": "TypeAlias",
@@ -2600,7 +2927,7 @@
         {
           "kind": "TypeAlias",
           "canonicalReference": "easy-tools-axios!StreamingCreateFormDataConfig:type",
-          "docComment": "/**\n * Loading 计数器类\n *\n * @public\n */\n",
+          "docComment": "/**\n * 流传输创建 FormData 配置\n *\n * @public\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -2657,6 +2984,30 @@
           "typeTokenRange": {
             "startIndex": 1,
             "endIndex": 8
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "easy-tools-axios!useLoadingCounter:var",
+          "docComment": "/**\n * Loading 使用计数器接口声明\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "useLoadingCounter: "
+            },
+            {
+              "kind": "Reference",
+              "text": "IUseLoadingCounter",
+              "canonicalReference": "easy-tools-axios!IUseLoadingCounter:interface"
+            }
+          ],
+          "fileUrlPath": "src/typings/util.d.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "useLoadingCounter",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 2
           }
         }
       ]

@@ -30,7 +30,7 @@ export class EasyAxios implements Base.EasyAxios {
   // 状态码拦截器
   __statusInterceptor: Base.IStatusInterceptorCallback = null
   // Loading 计数控制器实例
-  __loadingInstance: Util.ILoadingCounter = null
+  __loadingInstance: Util.LoadingCounter = null
 
   /**
    * 创建 axios 实例

@@ -14,12 +14,15 @@ export type ContentTypeOptions = {
 }
 
 // @public
+export const downloadStreamFile: IDownloadStreamFile;
+
+// @public
 class EasyAxios {
     constructor(config?: EasyAxiosConfig)
     // Warning: (ae-forgotten-export) The symbol "Util" needs to be exported by the entry point index.d.ts
     //
     // (undocumented)
-    __loadingInstance: Util.ILoadingCounter | null
+    __loadingInstance: Util.LoadingCounter | null
     // (undocumented)
     __statusInterceptor: IStatusInterceptorCallback | null
     // (undocumented)
@@ -69,17 +72,17 @@ export interface ICreate {
 }
 
 // @public
-export interface ILoadingCounter {
+export interface IDownloadStreamFile {
     // (undocumented)
-    count: number
+    (streamData: File|Blob, fileName: string): Promise<IDownloadStreamFileResult>
+}
+
+// @public
+export interface IDownloadStreamFileResult {
     // (undocumented)
-    readonly start: LoadingCounterStartOrStop
+    errorData?: unknown
     // (undocumented)
-    startCallback: LoadingCounterCallback
-    // (undocumented)
-    readonly stop: LoadingCounterStartOrStop
-    // (undocumented)
-    stopCallback: LoadingCounterCallback
+    state: 'success' | 'error'
 }
 
 // @public
@@ -186,6 +189,12 @@ export interface IUseLoading {
 }
 
 // @public
+export interface IUseLoadingCounter {
+    // (undocumented)
+    (startCallback: LoadingCounterCallback, stopCallback: LoadingCounterCallback): LoadingCounter
+}
+
+// @public
 export interface IUseRequestInterceptors {
     // (undocumented)
     (beforeRequestHandler?: RequestInterceptorsHandler, errorRequestHandler?: RequestInterceptorsErrorHandler): EasyAxios
@@ -201,6 +210,21 @@ export interface IUseResponseInterceptors {
 export interface IUseStatusInterceptors {
     // (undocumented)
     (callback: IStatusInterceptorCallback): EasyAxios
+}
+
+// @public
+export class LoadingCounter {
+    constructor(startCallback: LoadingCounterCallback, stopCallback: LoadingCounterCallback)
+    // (undocumented)
+    count: number
+    // (undocumented)
+    readonly start: LoadingCounterStartOrStop
+    // (undocumented)
+    startCallback: LoadingCounterCallback
+    // (undocumented)
+    readonly stop: LoadingCounterStartOrStop
+    // (undocumented)
+    stopCallback: LoadingCounterCallback
 }
 
 // @public
@@ -242,9 +266,12 @@ export type StreamingCreateFormDataConfig<T> = {
     customSequence?: Base.StreamingConfigCustomSequence
 }
 
+// @public
+export const useLoadingCounter: IUseLoadingCounter;
+
 // Warnings were encountered during analysis:
 //
-// src/typings/util.d.ts:38:3 - (ae-forgotten-export) The symbol "Base" needs to be exported by the entry point index.d.ts
+// src/typings/util.d.ts:53:3 - (ae-forgotten-export) The symbol "Base" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
 
