@@ -194,7 +194,7 @@ export interface IStreaming {
  * @public
  * EasyAxios 类
  */
-export declare abstract class EasyAxios {
+export declare class EasyAxios {
   config: EasyAxiosConfig
   axiosInstance: Axios.AxiosInstance | null
   readonly requestInterceptorsIds: number[]

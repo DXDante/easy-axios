@@ -18,7 +18,7 @@ import {
   parseResponseHeaderQueryParameters
 } from '../utils'
 
-export class EasyAxios implements Base.EasyAxios {
+export class EasyAxios {
   // EasyAxios 一些配置(启用查询参数过滤、启用请求日志等等)
   config: Base.EasyAxiosConfig
   // axaios 的实例
