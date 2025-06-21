@@ -225,12 +225,12 @@
           "excerptTokens": [
             {
               "kind": "Content",
-              "text": "export declare abstract class EasyAxios "
+              "text": "export declare class EasyAxios "
             }
           ],
           "fileUrlPath": "src/typings/base.d.ts",
           "releaseTag": "Public",
-          "isAbstract": true,
+          "isAbstract": false,
           "name": "EasyAxios",
           "preserveMemberOrder": false,
           "members": [

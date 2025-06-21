@@ -17,7 +17,7 @@ export type ContentTypeOptions = {
 export const downloadStreamFile: IDownloadStreamFile;
 
 // @public
-abstract class EasyAxios {
+class EasyAxios {
     constructor(config?: EasyAxiosConfig)
     // (undocumented)
     axiosInstance: Axios.AxiosInstance | null
