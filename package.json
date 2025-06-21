@@ -1,6 +1,6 @@
 {
   "name": "easy-tools-axios",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "a HTTP request tool based on axios library encapsulation",
   "keywords": [
     "easy-tools-axios",
