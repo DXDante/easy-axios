@@ -17,14 +17,8 @@ export type ContentTypeOptions = {
 export const downloadStreamFile: IDownloadStreamFile;
 
 // @public
-class EasyAxios {
+abstract class EasyAxios {
     constructor(config?: EasyAxiosConfig)
-    // Warning: (ae-forgotten-export) The symbol "Util" needs to be exported by the entry point index.d.ts
-    //
-    // (undocumented)
-    __loadingInstance: Util.LoadingCounter | null
-    // (undocumented)
-    __statusInterceptor: IStatusInterceptorCallback | null
     // (undocumented)
     axiosInstance: Axios.AxiosInstance | null
     // (undocumented)
@@ -181,6 +175,8 @@ export interface IStreamingDownloadResponse {
 
 // @public
 export interface IUseLoading {
+    // Warning: (ae-forgotten-export) The symbol "Util" needs to be exported by the entry point index.d.ts
+    //
     // (undocumented)
     (
     startCallback: Util.LoadingCounterCallback,

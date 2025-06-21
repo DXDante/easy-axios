@@ -28,9 +28,9 @@ export class EasyAxios implements Base.EasyAxios {
   // 响应拦截器标识
   readonly responseInterceptorsIds: number[] = []
   // 状态码拦截器
-  __statusInterceptor: Base.IStatusInterceptorCallback = null
+  private __statusInterceptor: Base.IStatusInterceptorCallback = null
   // Loading 计数控制器实例
-  __loadingInstance: Util.LoadingCounter = null
+  private __loadingInstance: Util.LoadingCounter = null
 
   /**
    * 创建 axios 实例

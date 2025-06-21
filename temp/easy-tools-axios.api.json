@@ -1,7 +1,7 @@
 {
   "metadata": {
     "toolPackage": "@microsoft/api-extractor",
-    "toolVersion": "7.34.4",
+    "toolVersion": "7.52.8",
     "schemaVersion": 1011,
     "oldestForwardsCompatibleVersion": 1001,
     "tsdocConfig": {
@@ -225,77 +225,15 @@
           "excerptTokens": [
             {
               "kind": "Content",
-              "text": "export declare class EasyAxios "
+              "text": "export declare abstract class EasyAxios "
             }
           ],
           "fileUrlPath": "src/typings/base.d.ts",
           "releaseTag": "Public",
-          "isAbstract": false,
+          "isAbstract": true,
           "name": "EasyAxios",
           "preserveMemberOrder": false,
           "members": [
-            {
-              "kind": "Property",
-              "canonicalReference": "easy-tools-axios!EasyAxios#__loadingInstance:member",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "__loadingInstance: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "Util.LoadingCounter",
-                  "canonicalReference": "easy-tools-axios!LoadingCounter:class"
-                },
-                {
-                  "kind": "Content",
-                  "text": " | null"
-                }
-              ],
-              "isReadonly": false,
-              "isOptional": false,
-              "releaseTag": "Public",
-              "name": "__loadingInstance",
-              "propertyTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 3
-              },
-              "isStatic": false,
-              "isProtected": false,
-              "isAbstract": false
-            },
-            {
-              "kind": "Property",
-              "canonicalReference": "easy-tools-axios!EasyAxios#__statusInterceptor:member",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "__statusInterceptor: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "IStatusInterceptorCallback",
-                  "canonicalReference": "easy-tools-axios!IStatusInterceptorCallback:interface"
-                },
-                {
-                  "kind": "Content",
-                  "text": " | null"
-                }
-              ],
-              "isReadonly": false,
-              "isOptional": false,
-              "releaseTag": "Public",
-              "name": "__statusInterceptor",
-              "propertyTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 3
-              },
-              "isStatic": false,
-              "isProtected": false,
-              "isAbstract": false
-            },
             {
               "kind": "Constructor",
               "canonicalReference": "easy-tools-axios!EasyAxios:constructor(1)",
