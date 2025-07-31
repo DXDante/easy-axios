@@ -77,6 +77,10 @@ const easyAxios = new EasyAxios(/** EasyAxios 配置项 */)
     // 服务器端私有状态码的拦截, 控制你的响应使用以不同的 Promise 回调、全局的错误提示等等 (这里主要是你业务级的处理)
     resolve(responce.data)
   })
+  .useErrorStatusInterceptors(({ error, disableToast, reject }) => {
+    // 服务器端响应失败时私有状态码的拦截, 控制你的响应使用以不同的 Promise 回调、全局的错误提示等等 (这里主要是你业务级的处理)
+    reject(error?.response.data)
+  })
   .useLoading(
     () => {
       // 控制你的 Loading 开启
@@ -160,6 +164,12 @@ export default easyAxios
   |  参数  |  类型  |  必填  |  说明  |
   |:---------|:---------|:--------|:-------------------------------------------------------------------------------------------|
   |callback	 |Function  |是       |状态码拦截器回调 (接收一个 Object 参数, 包含属性 response, resolve, reject, disableToast 四个参数, 经过处理后你应该使用 resolve/reject 返回你处理后的数据, 状态码拦截器的独立出去是为了'业务级的请求处理' 与 XHR 的处理单独管理)|
+
+
+◆ **instance.useErrorStatusInterceptors(...)    使用错误状态码拦截器, 参数顺序依下表顺序**
+  |  参数  |  类型  |  必填  |  说明  |
+  |:---------|:---------|:--------|:-------------------------------------------------------------------------------------------|
+  |callback	 |Function  |是       |状态码拦截器回调 (接收一个 Object 参数, 包含属性 error, reject, disableToast 三个参数, 经过处理后你应该使用 reject 返回你处理后的数据, 错误状态码拦截器的独立出去是为了'业务级的请求处理' 与 XHR 的处理单独管理)|
 
 
 ◆ **instance.useLoading(...)    使用 Loading 计数器, 参数顺序依下表顺序(自动根据使用请求次数控制 Loading 时间点)**

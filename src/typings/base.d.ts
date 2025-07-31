@@ -74,7 +74,7 @@ export interface IUseResponseInterceptors {
 
 /**
  * @public
- * EasyAxios 使用状态码拦截回调
+ * EasyAxios 状态码拦截回调
  */
 export interface IStatusInterceptorCallback {
   <R>(result: {
@@ -87,10 +87,30 @@ export interface IStatusInterceptorCallback {
 
 /**
  * @public
+ * EasyAxios 错误状态码拦截回调
+ */
+export interface IErrorStatusInterceptorCallback {
+  (result: {
+    error: Axios.AxiosError,
+    reject: (reson) => void,
+    disableToast: boolean
+  }): void
+}
+
+/**
+ * @public
  * EasyAxios 使用状态码拦截
  */
 export interface IUseStatusInterceptors {
   (callback: IStatusInterceptorCallback): EasyAxios
+}
+
+/**
+ * @public
+ * EasyAxios 使用错误状态码拦截
+ */
+export interface IUseErrorStatusInterceptors {
+  (callback: IErrorStatusInterceptorCallback): EasyAxios
 }
 
 /**
@@ -191,6 +211,13 @@ export interface IStreaming {
 }
 
 /**
+ * 在类里定义即可
+ */
+// __statusInterceptor: IStatusInterceptorCallback | null
+// __errorStatusInterceptor: IErrorStatusInterceptorCallback | null
+// __loadingInstance: Util.LoadingCounter | null
+
+/**
  * @public
  * EasyAxios 类
  */
@@ -199,14 +226,13 @@ export declare class EasyAxios {
   axiosInstance: Axios.AxiosInstance | null
   readonly requestInterceptorsIds: number[]
   readonly responseInterceptorsIds: number[]
-  // __statusInterceptor: IStatusInterceptorCallback | null
-  // __loadingInstance: Util.LoadingCounter | null
   create: ICreate
   useRequestInterceptors: IUseRequestInterceptors
   destroyRequestInterceptors: (interceptorId: number) => void
   useResponseInterceptors: IUseResponseInterceptors
   destroyResponseInterceptors: (interceptorId: number) => void
   useStatusInterceptors: IUseStatusInterceptors
+  useErrorStatusInterceptors: IUseErrorStatusInterceptors
   useLoading: IUseLoading
   request: IRequest
   streaming: IStreaming

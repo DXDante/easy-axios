@@ -40,6 +40,8 @@ class EasyAxios {
     // (undocumented)
     streaming: IStreaming
     // (undocumented)
+    useErrorStatusInterceptors: IUseErrorStatusInterceptors
+    // (undocumented)
     useLoading: IUseLoading
     // (undocumented)
     useRequestInterceptors: IUseRequestInterceptors
@@ -77,6 +79,16 @@ export interface IDownloadStreamFileResult {
     errorData?: unknown
     // (undocumented)
     state: 'success' | 'error'
+}
+
+// @public
+export interface IErrorStatusInterceptorCallback {
+    // (undocumented)
+    (result: {
+        error: Axios.AxiosError,
+        reject: (reson) => void,
+        disableToast: boolean
+    }): void
 }
 
 // @public
@@ -171,6 +183,12 @@ export interface IStreamingDownloadResponse {
     }
     // (undocumented)
     message: string
+}
+
+// @public
+export interface IUseErrorStatusInterceptors {
+    // (undocumented)
+    (callback: IErrorStatusInterceptorCallback): EasyAxios
 }
 
 // @public

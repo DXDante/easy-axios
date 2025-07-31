@@ -29,6 +29,8 @@ export class EasyAxios {
   readonly responseInterceptorsIds: number[] = []
   // 状态码拦截器
   private __statusInterceptor: Base.IStatusInterceptorCallback = null
+  // 错误状态码拦截器
+  private __errorStatusInterceptor: Base.IErrorStatusInterceptorCallback = null
   // Loading 计数控制器实例
   private __loadingInstance: Util.LoadingCounter = null
 
@@ -48,7 +50,7 @@ export class EasyAxios {
     axios: Axios.AxiosStatic,
     config: Axios.AxiosRequestConfig = {},
     qs?: any
-  ): Base.EasyAxios {
+  ): this {
     this.axiosInstance = axios.create(Object.assign({}, useAxiosDefaultRequestConfig(qs), config))
     return this
   }
@@ -62,7 +64,7 @@ export class EasyAxios {
   useRequestInterceptors(
     beforeRequestHandler?: Base.RequestInterceptorsHandler,
     errorRequestHandler?: Base.RequestInterceptorsErrorHandler
-  ): Base.EasyAxios {
+  ): this {
     requestInstanceErrorCheck(this.axiosInstance)
     const interceptorId = this.axiosInstance.interceptors.request.use(
       config => {
@@ -127,7 +129,7 @@ export class EasyAxios {
   useResponseInterceptors(
     responseHandler?: Base.ResponseInterceptorsHandler,
     errorResponseHandler?: Base.ResponseInterceptorsErrorHandler
-  ): Base.EasyAxios {
+  ): this {
     requestInstanceErrorCheck(this.axiosInstance)
     const interceptorId = this.axiosInstance.interceptors.response.use(
       response => {
@@ -186,8 +188,18 @@ export class EasyAxios {
    * @param { Base.IStatusInterceptorCallback } callback                   状态码拦截器回调 (型参包含 response, resolve, reject, disableToast)
    * @returns { EasyAxios }                                                当前 EasyAxios 实例
    */
-  useStatusInterceptors(callback: Base.IStatusInterceptorCallback): Base.EasyAxios {
+  useStatusInterceptors(callback: Base.IStatusInterceptorCallback): this {
     this.__statusInterceptor = callback
+    return this
+  }
+
+  /**
+   * 使用错误状态码拦截器
+   * @param { Base.IErrorStatusInterceptorCallback } callback              错误状态码拦截器回调 (型参包含 response, resolve, reject, disableToast)
+   * @returns { EasyAxios }                                                当前 EasyAxios 实例
+   */
+  useErrorStatusInterceptors(callback: Base.IErrorStatusInterceptorCallback): this {
+    this.__errorStatusInterceptor = callback
     return this
   }
 
@@ -200,7 +212,7 @@ export class EasyAxios {
   useLoading(
     startCallback: Util.LoadingCounterCallback,
     stopCallback: Util.LoadingCounterCallback
-  ): Base.EasyAxios {
+  ): this {
     this.__loadingInstance = useLoadingCounter(startCallback, stopCallback)
     return this
   }
@@ -270,11 +282,9 @@ export class EasyAxios {
           resolve(<R>response.data)
         })
         .catch(error => {
-          // // !(error instanceof Cancel)
-          // if (!disableToast) {
-          //   const tip = error.isAxiosError && error.message.match('timeout') ? '访问超时' : '服务器内部错误'
-          //   // message({ type: 'error', message: tip })
-          // }
+          if (__isFunction(this.__errorStatusInterceptor)) {
+            return this.__errorStatusInterceptor({ error, disableToast, reject })
+          }
           
           reject(error?.response)
         })
@@ -410,6 +420,10 @@ export class EasyAxios {
           resolve(<R>response.data)
         })
         .catch(error => {
+          if (__isFunction(this.__errorStatusInterceptor)) {
+            return this.__errorStatusInterceptor({ error, disableToast, reject })
+          }
+
           reject(error?.response)
         })
         .finally(() => {
